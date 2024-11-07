@@ -42,7 +42,7 @@ public class ShelterController {
     }
 
     @GetMapping("/filter")
-    public List<Shelter> getFilteredShelters(@RequestBody ShelterFilter shelterFilter) {
+    public List<Shelter> getFilteredShelters(ShelterFilter shelterFilter) {
         return shelterService.getFilteredShelters(shelterFilter);
     }
 }

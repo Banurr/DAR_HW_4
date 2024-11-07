@@ -43,17 +43,21 @@ public class ShelterService {
     }
 
     public List<Shelter> getFilteredShelters(ShelterFilter shelterFilter) {
+
         QShelter qShelter = QShelter.shelter;
         BooleanBuilder filterPredicate = new BooleanBuilder();
+
         if(shelterFilter.getName() != null) {
             filterPredicate.and(qShelter.name.containsIgnoreCase(shelterFilter.getName()));
         }
+
         if(shelterFilter.getType() != null) {
             filterPredicate.and(qShelter.type.eq(shelterFilter.getType()));
         }
+
         if(shelterFilter.getLocation() != null) {
             filterPredicate.and(qShelter.location.containsIgnoreCase(shelterFilter.getLocation()));
         }
-        return null;
+        return (List<Shelter>) shelterRepository.findAll(filterPredicate);
     }
 }
