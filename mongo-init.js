@@ -1,4 +1,4 @@
-db = db.getSiblingDB("shelter");
+db = db.getSiblingDB("shelters");
 
 db.createUser({
     user: "dar",

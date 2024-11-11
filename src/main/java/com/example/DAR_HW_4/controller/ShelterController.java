@@ -3,9 +3,11 @@ package com.example.DAR_HW_4.controller;
 
 import com.example.DAR_HW_4.model.Shelter;
 import com.example.DAR_HW_4.model.ShelterFilter;
+import com.example.DAR_HW_4.model.ShelterSort;
 import com.example.DAR_HW_4.service.ShelterService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+
 
 import java.util.List;
 
@@ -42,7 +44,13 @@ public class ShelterController {
     }
 
     @GetMapping("/filter")
-    public List<Shelter> getFilteredShelters(ShelterFilter shelterFilter) {
-        return shelterService.getFilteredShelters(shelterFilter);
+    public List<Shelter> getFilteredShelters(Object s,
+                                             @ModelAttribute ShelterFilter shelterFilter,
+                                             @ModelAttribute ShelterSort shelterSort,
+                                             @RequestParam(value = "page", defaultValue = "0") int page,
+                                             @RequestParam(value = "size", defaultValue = "10") int size
+    ) {
+
+        return shelterService.getFilteredShelters(shelterFilter, shelterSort, page, size).getContent();
     }
 }
