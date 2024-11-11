@@ -20,10 +20,10 @@ To set up this project locally, follow these steps:
 ## Endpoints to check
 All endpoints are written in the Shelter API postman collection
 
-## Filter endpoint
-All query attributes are not necessary!
-For paging some default values provided!
-Values in the request are snakeCase!
+## -Filter endpoint 
+-All query attributes are not necessary!
+-For paging some default values provided!
+-Values in the request are snakeCase!
 
 ### Searching by fields  
 name type location
