@@ -16,7 +16,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-
 import java.util.Arrays;
 import java.util.List;
 import java.util.UUID;
@@ -28,6 +27,8 @@ public class ShelterService {
     private final String EXCEPTION_MESSAGE = "Correct types are " + Arrays.toString(ShelterType.values());
 
     private final ShelterRepository shelterRepository;
+
+    private final QShelter qShelter = QShelter.shelter;
 
     public void createShelter(Shelter shelter) {
         shelter.setId(String.valueOf(UUID.randomUUID()));
@@ -47,13 +48,13 @@ public class ShelterService {
     }
 
     public void deleteShelterById(String id) {
+
         getShelterById(id);
         shelterRepository.deleteById(id);
     }
 
     public Page<Shelter> getFilteredShelters(ShelterFilter shelterFilter, ShelterSort shelterSort, int page, int size) {
 
-        QShelter qShelter = QShelter.shelter;
         BooleanBuilder filterPredicate = new BooleanBuilder();
 
         filterByAttributes(shelterFilter, filterPredicate, qShelter);
@@ -78,13 +79,11 @@ public class ShelterService {
             catch (Exception e) {
                 throw new InvalidShelterTypeException(EXCEPTION_MESSAGE);
             }
-
         }
 
         if(isValid(shelterFilter.getLocation())) {
             filterPredicate.and(qShelter.location.containsIgnoreCase(shelterFilter.getLocation()));
         }
-
     }
 
     private Sort getSortByAttributes(ShelterSort shelterSort) {
@@ -145,5 +144,4 @@ public class ShelterService {
     private boolean isValid(Object attribute) {
         return attribute != null;
     }
-
 }

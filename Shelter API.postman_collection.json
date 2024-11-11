@@ -1,0 +1,152 @@
+{
+	"info": {
+		"_postman_id": "58a66857-e628-4133-a213-d61b4d3e8305",
+		"name": "Shelter API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37319751"
+	},
+	"item": [
+		{
+			"name": "Get all shelters",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/shelters/all",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shelters",
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get shelter by id",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/shelters/703bc759-593e-4e8b-8374-bcb16d7afd5c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shelters",
+						"703bc759-593e-4e8b-8374-bcb16d7afd5c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create shelter",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\": \"{{$randomCompanyName}}\",\n    \"location\": \"{{$randomStreetName}}\",\n    \"capacity\": \"{{$randomInt}}\",\n    \"type\" : \"Traditional\",\n    \"rating\": \"{{$randomInt}}\",\n    \"isGovernmentFunded\": \"{{$randomBoolean}}\",\n    \"averageAdoptionTime\": \"{{$randomInt}}\",\n    \"dailyCost\": \"{{$randomInt}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/shelters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shelters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update shelter",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\" : \"703bc759-593e-4e8b-8374-bcb16d7afd5c\",\n    \"name\": \"{{$randomCompanyName}}\",\n    \"location\": \"{{$randomStreetName}}\",\n    \"capacity\": \"{{$randomInt}}\",\n    \"type\" : \"Sanctuary\",\n    \"rating\": \"{{$randomInt}}\",\n    \"isGovernmentFunded\": \"{{$randomBoolean}}\",\n    \"averageAdoptionTime\": \"{{$randomInt}}\",\n    \"dailyCost\": \"{{$randomInt}}\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/api/shelters",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shelters"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete shelter",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/shelters/703bc759-593e-4e8b-8374-bcb16d7afd5c",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shelters",
+						"703bc759-593e-4e8b-8374-bcb16d7afd5c"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Search by filter, sorting and pages",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/api/shelters/filter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"shelters",
+						"filter"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
